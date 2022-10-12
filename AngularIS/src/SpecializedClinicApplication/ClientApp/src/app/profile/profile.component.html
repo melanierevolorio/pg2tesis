@@ -1,0 +1,75 @@
+<div class="flex h-full">
+  <div class="m-auto p-10">
+
+    <!-- Form -->
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
+      <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Datos</h1>
+
+      <!-- Name -->
+      <p>
+        <mat-label>Usuario: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Usuario" formControlName="userName" />
+        </mat-form-field>
+      </p>
+      <p>
+        <!-- Email -->
+        <mat-label>Correo: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" />
+        </mat-form-field>
+      </p>
+      <!-- Gender -->
+      <p>
+        <mat-label>Rol: </mat-label>
+        <mat-radio-group aria-label="Role" formControlName="role">
+          <mat-radio-button value="Administrador">Administrador</mat-radio-button>
+          <mat-radio-button value="Operador">Operador</mat-radio-button>
+        </mat-radio-group>
+      </p>
+      <!--<p>
+  <mat-form-field>
+    <input matInput
+           readonly
+           [matDatepicker]="picker"
+           placeholder="Date of birth"
+           formControlName="dob"
+           (dateChange)="date($event)" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </p>-->
+      <!-- Date picker -->
+      <!-- Class -->
+      <!--<p>
+  <mat-form-field>
+    <mat-label>Grade</mat-label>
+    <mat-select formControlName="grade">
+      <mat-option [value]="gradeArray" *ngFor="let gradeArray of GradeArray">
+        {{ gradeArray }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </p>-->
+      <!-- Add Subjects -->
+      <!--<mat-form-field class="multiple-items">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let subjectsArray of SubjectsArray"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="remove(subjectsArray)">
+        {{ subjectsArray.name }}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Add subjects"
+             [matChipInputFor]="chipList"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)" />
+    </mat-chip-list>
+  </mat-form-field>-->
+      <!-- Submit -->
+      <!--<button mat-flat-button color="primary">Editar</button>-->
+    </form>
+  </div>
+</div>

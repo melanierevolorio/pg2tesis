@@ -1,0 +1,30 @@
+<mat-toolbar color="primary" class="text-white">
+
+  <button mat-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    Que onda
+  </button>
+  <span class="example-spacer"></span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="fill-remaining-space"></span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/">Clientes</button>
+    <button mat-button routerLink="/">Inventario</button>
+    <ng-container *ngIf="user$ | async; let user">
+      <button mat-button routerLink="/settings">{{user.userName}}</button>
+      <button mat-button routerLink="/logout">Cerrar sesión</button>
+    </ng-container>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/">Clientes</button>
+  <button mat-menu-item routerLink="/">Inventario</button>
+  <ng-container *ngIf="user$ | async; let user">
+      <button mat-menu-item routerLink="/settings">{{user.userName}}</button>
+      <button mat-menu-item routerLink="/logout">Cerrar sesión</button>
+  </ng-container>
+</mat-menu>
