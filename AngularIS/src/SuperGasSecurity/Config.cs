@@ -117,14 +117,14 @@ public static class Config
         new List<ApplicationUser>
         {
             new ApplicationUser(){
-                Id = "1",
+                Id = "4687114b-bf9a-4f03-85c2-7c4b04484956",
                 UserName = "alice",
                 Email = "AliceSmith@email.com",
                 EmailConfirmed = true,
                 FavoriteColor = "green",
             },
             new ApplicationUser(){
-                Id = "2",
+                Id = "7cf2693f-f61d-4c57-ac61-90e51010f281",
                 UserName = "bob",
                 Email = "BobSmith@email.com",
                 EmailConfirmed = true,
@@ -137,11 +137,13 @@ public static class Config
         {
             new IdentityRole(){
                 Id = "1",
-                Name = "Administrador"
+                Name = "Administrador",
+                NormalizedName = "ADMINISTRADOR"
             },
             new IdentityRole(){
                 Id = "2",
-                Name = "Operador"
+                Name = "Operador",
+                NormalizedName = "OPERADOR"
             }
         };
 
@@ -150,13 +152,13 @@ public static class Config
         {
             new IdentityUserRole<string>()
             {
-                RoleId = "2",
-                UserId = "1"
+                RoleId = "1",
+                UserId = "4687114b-bf9a-4f03-85c2-7c4b04484956"
             },
             new IdentityUserRole<string>()
             {
                 RoleId = "1",
-                UserId = "2"
+                UserId = "7cf2693f-f61d-4c57-ac61-90e51010f281"
             }
         };
 }

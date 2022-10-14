@@ -22,6 +22,8 @@ import { UserManagementService } from '../services/user-management.service';
 
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ModalConfirmComponent } from './modals/confirm/modal-confirm.component';
+import { InsertUserComponent } from './dashboard-user/insert-user/insert-user.component';
+import { UpdateUserComponent } from './dashboard-user/update-user/update-user.component';
 
 @NgModule({
   imports: [
@@ -44,7 +46,9 @@ import { ModalConfirmComponent } from './modals/confirm/modal-confirm.component'
     SettingsComponent,
     ProfileComponent,
     UserDashboardComponent,
-    ModalConfirmComponent
+    ModalConfirmComponent,
+    InsertUserComponent,
+    UpdateUserComponent
   ],
   providers: [AuthService, UserManagementService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }  ],

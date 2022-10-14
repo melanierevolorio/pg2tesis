@@ -37,7 +37,7 @@ export class AuthService {
       .pipe(
         map(response => {
           return new User(
-            parseInt(response.find(x => x.type == UserClaimKeys.SUB)?.value!),
+            response.find(x => x.type == UserClaimKeys.SUB)?.value!,
             response.find(x => x.type == UserClaimKeys.PREFERRED_USERNAME)?.value!,
             response.find(x => x.type == UserClaimKeys.EMAIL)?.value!,
             response.find(x => x.type == UserClaimKeys.ROLE)?.value!
@@ -63,7 +63,7 @@ export class AuthService {
     this.userClaims = this.local.getJsonData('currentUser');
     if (this.userClaims.length > 0) {
       const user = new User(
-        parseInt(this.userClaims.find(x => x.type == UserClaimKeys.SUB)?.value!),
+        this.userClaims.find(x => x.type == UserClaimKeys.SUB)?.value!,
         this.userClaims.find(x => x.type == UserClaimKeys.PREFERRED_USERNAME)?.value!,
         this.userClaims.find(x => x.type == UserClaimKeys.EMAIL)?.value!,
         this.userClaims.find(x => x.type == UserClaimKeys.ROLE)?.value!

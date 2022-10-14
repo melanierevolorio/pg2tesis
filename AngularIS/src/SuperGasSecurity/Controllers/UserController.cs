@@ -33,9 +33,9 @@ namespace SuperGasSecurity.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetUserBasicDataResponse> Get(int id)
+        public async Task<GetUserBasicDataResponse> Get(string id)
         {
-            var user = await _userManager.FindByIdAsync(id.ToString());
+            var user = await _userManager.FindByIdAsync(id);
 
             var roles = await _userManager.GetRolesAsync(user);
 
@@ -54,25 +54,21 @@ namespace SuperGasSecurity.Controllers
 
             var userModels = new List<UserModel>();
 
-            users.ForEach(async user =>
+            foreach (var user in users)
             {
                 var currentUser = user.Adapt<UserModel>();
                 var roles = await _userManager.GetRolesAsync(user);
                 currentUser.Role = roles.FirstOrDefault();
                 userModels.Add(currentUser);
-            });
-
+            }
             return userModels;
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> Patch(UpdateUser request)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Patch(string id, [FromBody] UpdateUser request)
         {
-            var user = await _userManager.FindByIdAsync(request.UserId);
-            //var roleIdentity = User.Identities.ElementAt(1);
-            //var role = roleIdentity.Claims
-            //                .Where(c => c.Type == System.Security.Claims.ClaimTypes.Role)
-            //                .Select(c => c.Value).FirstOrDefault();
+            var user = await _userManager.FindByIdAsync(id);
+
             var roles = await _userManager.GetRolesAsync(user);
 
             await _userManager.RemoveFromRoleAsync(user, roles.FirstOrDefault());
@@ -82,10 +78,23 @@ namespace SuperGasSecurity.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpPost]
+        public async Task<IActionResult> Post(AddUser request)
         {
-            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            var user = request.Adapt<ApplicationUser>();
+            var result = await _userManager.CreateAsync(user, request.Password);
+
+            if (result.Succeeded)
+                result = await _userManager.AddToRoleAsync(user, "Operador");
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
             await _userManager.DeleteAsync(user);
 
             return Ok();

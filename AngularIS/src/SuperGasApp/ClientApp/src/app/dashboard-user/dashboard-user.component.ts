@@ -15,7 +15,7 @@ import { ModalConfirmComponent } from '../modals/confirm/modal-confirm.component
 })
 export class UserDashboardComponent implements OnInit {
   users: User[] = [];
-  displayedColumns: string[] = ['id', 'userName', 'email', 'role', 'actions'];
+  displayedColumns: string[] = ['actions', 'userName', 'email', 'role'];
   //dataSource = new MatTableDataSource([...ELEMENT_DATA, ...ELEMENT_DATA]);
   dataSource = new MatTableDataSource<User>();
 

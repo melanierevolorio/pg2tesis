@@ -10,10 +10,10 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-      <button mat-button routerLink="/">Clientes</button>
-      <button mat-button routerLink="/">Inventario</button>
       <ng-container *ngIf="user$ | async; let user">
-        <button mat-button routerLink="/settings">{{user.userName}}</button>
+        <button mat-button routerLink="/">Clientes</button>
+        <button mat-button routerLink="/">Inventario</button>
+        <button mat-button routerLink="/user">Usuarios</button>
         <button mat-button routerLink="/logout">Cerrar sesión</button>
       </ng-container>
     </div>
