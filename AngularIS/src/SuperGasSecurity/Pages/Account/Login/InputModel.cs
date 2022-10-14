@@ -9,11 +9,11 @@ namespace SuperGasSecurity.Pages.Account.Login;
 public class InputModel
 {
     [Required]
-    [DisplayName("Usuario")]
+    [DisplayName("")]
     public string Username { get; set; }
 
     [Required]
-    [DisplayName("Contraseña")]
+    [DisplayName("")]
     public string Password { get; set; }
 
     public bool RememberLogin { get; set; }

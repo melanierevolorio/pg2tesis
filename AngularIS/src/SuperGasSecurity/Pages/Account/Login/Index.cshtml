@@ -17,7 +17,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <h4 class="text-center">Inicio de sesión</h4>
+                        <h4 class="text-center table-active">Inicio de sesión</h4>
                     </div>
 
                     <div class="card-body">
@@ -32,21 +32,27 @@
                                 <label asp-for="Input.Password"></label>
                                 <input type="password" class="form-control" placeholder="Contraseña" asp-for="Input.Password" autocomplete="off">
                             </div>
-
+                            
                             @if (Model.View.AllowRememberLogin)
                             {
                                 <div class="form-group">
                                     <div class="form-check">
+                                        <tr>
                                         <input class="form-check-input" asp-for="Input.RememberLogin">
                                         <label class="form-check-label" asp-for="Input.RememberLogin">
+                                            
                                             Recordarme
+                                     
                                         </label>
+                                        </tr>
                                     </div>
                                 </div>
                             }
-
-                            <button class="btn btn-primary" name="Input.Button" value="login">Ingresar</button>
-                            <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancelar</button>
+                            <div class="col text-center">
+                                <button class="btn btn-primary" name="Input.Button" value="login">Ingresar</button>
+                            </div>
+                            
+                         @*\   <button class="btn btn-secondary" name="Input.Button" value="cancel">Cancelar</button>*@
                         </form>
                     </div>
                 </div>
