@@ -1,4 +1,49 @@
-<div class="w-full">
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="side" class="primary" [ngStyle]="{ 'width.em': sidenavWidth }" opened="true" (mouseenter)="increase()"
+               (mouseleave)="decrease()">
+    <div class="logomain" >Logo Part</div>
+    <mat-nav-list>
+      <mat-list-item routerLink="/user" routerLinkActive="active" >
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="primary">Clientes</h5>
+        </div>
+      </mat-list-item>
+      <!--<ng-container *ngIf="user$ | async; let user">
+        <button mat-button routerLink="/">Clientes</button>
+        <button mat-button routerLink="/">Inventario</button>
+        <button mat-button routerLink="/user">Usuarios</button>
+        <button mat-button routerLink="/logout">Cerrar sesión</button>
+      </ng-container>-->
+      <mat-list-item routerLink="2" routerLinkActive="active">
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="primary">Services</h5>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="3" routerLinkActive="active">
+        <mat-icon mat-list-icon>local_phone</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="primary">Contact</h5>
+        </div>
+      </mat-list-item>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+    <mat-icon (click)="sidenav.toggle()" class="sidenav-menu">menu</mat-icon>
+
+  <div class="example-sidenav-content">
+     <router-outlet></router-outlet> 
+  </div>
+
+
+</mat-sidenav-container>
+<!--<div class="w-full">
   <mat-toolbar color="primary" class="text-white">
     <img class="rounded-full border border-gray-100 shadow-sm h-full" src="../../assets/img/diente-tesis-logo.png" />
 
@@ -6,9 +51,9 @@
       <mat-icon>home</mat-icon>
       Que onda
     </button>
-    <span class="example-spacer"></span>
+    <span class="example-spacer"></span>-->
     <!-- This fills the remaining space of the current row -->
-    <span class="fill-remaining-space"></span>
+    <!--<span class="fill-remaining-space"></span>
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
       <ng-container *ngIf="user$ | async; let user">
         <button mat-button routerLink="/">Clientes</button>
@@ -31,4 +76,4 @@
     </ng-container>
   </mat-menu>
 
-</div>
+</div>-->
