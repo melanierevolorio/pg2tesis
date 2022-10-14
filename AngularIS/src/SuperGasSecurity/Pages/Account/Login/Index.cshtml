@@ -13,13 +13,11 @@
         @if (Model.View.EnableLocalLogin)
         {
             <div class="col-xs- 6 col-sm-4">
-                
                 <div class="card">
                     <div class="card-header">
 
                         <h4 class="text-center table-active">Inicio de sesión</h4>
                     </div>
-
                     <div class="card-body">
                         <form asp-page="/Account/Login/Index">
                             <input type="hidden" asp-for="Input.ReturnUrl" />
@@ -32,19 +30,16 @@
                                 <label asp-for="Input.Password"></label>
                                 <input type="password" class="form-control" placeholder="Contraseña" asp-for="Input.Password" autocomplete="off">
                             </div>
-                            
+                         
                             @if (Model.View.AllowRememberLogin)
                             {
                                 <div class="form-group">
-                                    <div class="form-check">
-                                        <tr>
-                                        <input class="form-check-input" asp-for="Input.RememberLogin">
-                                        <label class="form-check-label" asp-for="Input.RememberLogin">
-                                            
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  asp-for="Input.RememberLogin">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault" asp-for="Input.RememberLogin">
                                             Recordarme
-                                     
                                         </label>
-                                        </tr>
+                                   
                                     </div>
                                 </div>
                             }
