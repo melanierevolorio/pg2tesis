@@ -1,16 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
 import { UserManagementService } from '../../services/user-management.service';
+import { ModalConfirmComponent } from '../modals/confirm/modal-confirm.component';
 
 @Component({
-  selector: 'manage-users-component',
-  templateUrl: './manage-users.component.html',
-  styleUrls: ['./manage-users.component.scss']
+  selector: 'dashboard-users-component',
+  templateUrl: './dashboard-user.component.html',
+  styleUrls: ['./dashboard-user.component.scss']
 })
-export class ManageUsersComponent implements OnInit {
+export class UserDashboardComponent implements OnInit {
   users: User[] = [];
   displayedColumns: string[] = ['id', 'userName', 'email', 'role', 'actions'];
   //dataSource = new MatTableDataSource([...ELEMENT_DATA, ...ELEMENT_DATA]);
@@ -21,8 +24,38 @@ export class ManageUsersComponent implements OnInit {
     this.dataSource.paginator = paginator;
   }
 
-  constructor(public userService: UserManagementService) { }
+  constructor(
+    public userService: UserManagementService,
+    private dialog: MatDialog,
+    private router: Router
+  ) { }
 
+  openDialog(user: User) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      title: "Usuario",
+      description: "Eliminar",
+    };
+
+    const dialogRef = this.dialog.open(ModalConfirmComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data) {
+          this.userService.deleteUser(user.id!).subscribe(result => {
+            this.dataSource.data.splice(user.index!, 1);
+            this.dataSource._updateChangeSubscription();
+            this.dataSource.sort = this.sort;
+            this.dataSource.paginator = this.matPaginator;
+          });
+        }
+      }
+    );
+  }
   ngOnInit() {
     this.userService.getAllUsers().subscribe(result => {
       result.forEach(function (row, index) {
@@ -50,5 +83,13 @@ export class ManageUsersComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.matPaginator;
     });
+  }
+
+  edit(user: User) {
+    this.router.navigate(["/user/edit", user.id!]);
+  }
+
+  goToAddUser() {
+    this.router.navigate(["/user/add"]);
   }
 }

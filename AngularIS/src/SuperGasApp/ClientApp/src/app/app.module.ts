@@ -16,11 +16,12 @@ import { LogoutComponent } from './logout/logout.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { UserDashboardComponent } from './dashboard-user/dashboard-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserManagementService } from '../services/user-management.service';
 
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { ModalConfirmComponent } from './modals/confirm/modal-confirm.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     LogoutComponent,
     SettingsComponent,
     ProfileComponent,
-    ManageUsersComponent
+    UserDashboardComponent,
+    ModalConfirmComponent
   ],
   providers: [AuthService, UserManagementService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }  ],

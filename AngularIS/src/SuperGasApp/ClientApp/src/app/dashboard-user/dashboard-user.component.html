@@ -1,11 +1,14 @@
-<div class="flex h-full">
+<div class="flex h-full w-screen">
   <div class="m-auto p-10 container">
-    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-black-600">Administración </h1>
+    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Administración de usuarios</h1>
     <div class="container h-full w-full">
 
       <mat-form-field>
         <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar">
       </mat-form-field>
+      <div class="button-wrapper">
+        <button mat-flat-button color="primary" (click)="goToAddUser()">Añadir nuevo usuario</button>
+      </div>
       <table mat-table matSort matTableResponsive [dataSource]="dataSource">
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -41,10 +44,10 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button (click)="delete(element)">
+            <button mat-icon-button (click)="edit(element)">
               <mat-icon color="primary">edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="delete(element)">
+            <button mat-icon-button (click)="openDialog(element)">
               <mat-icon color="primary">delete</mat-icon>
             </button>
           </td>
