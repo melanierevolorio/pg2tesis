@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerDashboardComponent } from './dashboard-customer/dashboard-customer.component';
 import { InsertCustomerComponent } from './dashboard-customer/insert-customer/insert-customer.component';
 import { UpdateCustomerComponent } from './dashboard-customer/update-customer/update-customer.component';
+import { OrderDashboardComponent } from './dashboard-order/dashboard-order.component';
+import { InsertOrderComponent } from './dashboard-order/insert-order/insert-order.component';
+import { UpdateOrderComponent } from './dashboard-order/update-order/update-order.component';
 import { UserDashboardComponent } from './dashboard-user/dashboard-user.component';
 import { InsertUserComponent } from './dashboard-user/insert-user/insert-user.component';
 import { UpdateUserComponent } from './dashboard-user/update-user/update-user.component';
@@ -29,6 +32,9 @@ const routes: Routes = [
         { path: 'customer', pathMatch: 'full', component: CustomerDashboardComponent },
         { path: 'customer/edit/:id', pathMatch: 'full', component: UpdateCustomerComponent },
         { path: 'customer/add', pathMatch: 'full', component: InsertCustomerComponent },
+        { path: 'order', pathMatch: 'full', component: OrderDashboardComponent },
+        { path: 'order/edit/:id', pathMatch: 'full', component: UpdateOrderComponent },
+        { path: 'order/add', pathMatch: 'full', component: InsertOrderComponent },
       ]
   },
   { path: 'login', pathMatch: 'full', component: LoginComponent },

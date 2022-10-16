@@ -1,0 +1,41 @@
+<div class="flex h-full">
+  <div class="m-auto p-10">
+
+    <!-- Form -->
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
+      <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Datos</h1>
+
+      <!-- Anotaciones -->
+      <p>
+        <mat-label>Anotaciones: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Anotaciones" formControlName="annotations" />
+          <!--<mat-error *ngIf="myError('annotations', 'required')">Nombre obligatorio</mat-error>-->
+
+        </mat-form-field>
+      </p>
+      <p>
+        <!-- Cliente -->
+        <mat-label>Cliente: </mat-label>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Cliente" formControlName="customersId" />
+          <mat-error *ngIf="myError('customersId', 'required')">Nombre del cliente obligatorio</mat-error>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <!-- Fecha -->
+        <mat-label>Fecha: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Fecha" formControlName="date" />
+          <mat-error *ngIf="myError('date', 'required')">Fecha</mat-error>
+
+        </mat-form-field>
+      </p>
+      <!-- Submit -->
+      <div class="button-wrapper">
+        <button mat-flat-button color="primary">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</div>
