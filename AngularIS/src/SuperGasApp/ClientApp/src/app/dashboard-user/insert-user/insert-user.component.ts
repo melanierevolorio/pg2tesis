@@ -23,14 +23,16 @@ export class InsertUserComponent implements OnInit {
     this.reactiveForm();
   }
 
+
   reactiveForm() {
     this.myForm = this.fb.group({
-      userName: ['', Validators.required],
-      email: ['', Validators.required],
-      role: ['', Validators.required],
-      password: ['', Validators.required]
+      userName: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      role: [null, Validators.required],
+      password: [null, Validators.required]
     });
   }
+
 
   date(e) {
     var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
@@ -38,11 +40,25 @@ export class InsertUserComponent implements OnInit {
       onlyself: true,
     });
   }
-
   submitForm() {
+    let valid = true;
     console.log(this.myForm.value);
-    this.userService.addUser(this.myForm.value).subscribe(res => {
-      this.router.navigate(["/user"]);
+    Object.keys(this.myForm.controls).forEach(key => {
+      // Get errors of every form control
+      if (this.myForm.get(key)!.errors != null) {
+        valid = false;
+      }
     });
+
+    if (valid) {
+      this.userService.patchUser(this.myForm.value).subscribe(res => {
+        this.router.navigate(["/user"]);
+      });
+    }
   }
+  public myError = (controlName: string, errorName: string) => {
+    return this.myForm.controls[controlName].hasError(errorName);
+  }
+
+ 
 }

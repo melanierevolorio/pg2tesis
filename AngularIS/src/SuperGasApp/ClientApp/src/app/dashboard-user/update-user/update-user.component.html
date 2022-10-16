@@ -10,6 +10,8 @@
         <mat-label>Usuario: </mat-label>
         <mat-form-field>
           <input matInput placeholder="Usuario" formControlName="userName" />
+          <mat-error *ngIf="myError('userName', 'required')">Usuario obligatorio</mat-error>
+
         </mat-form-field>
       </p>
       <p>
@@ -17,6 +19,9 @@
         <mat-label>Correo: </mat-label>
         <mat-form-field>
           <input matInput placeholder="Email" formControlName="email" />
+          <mat-error *ngIf="myError('email', 'required')">Correo requerido</mat-error>
+          <mat-error *ngIf="myError('email', 'email')">Debe ser un correo electrónico</mat-error>
+
         </mat-form-field>
       </p>
       <!-- Gender -->

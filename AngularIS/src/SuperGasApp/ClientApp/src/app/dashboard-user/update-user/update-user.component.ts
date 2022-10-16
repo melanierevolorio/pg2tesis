@@ -32,9 +32,9 @@ export class UpdateUserComponent implements OnInit {
 
   reactiveForm() {
     this.myForm = this.fb.group({
-      userName: ['', Validators.required],
-      email: ['', Validators.required],
-      role: ['', Validators.required],
+      userName: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      role: [null, Validators.required],
     });
   }
 
@@ -46,10 +46,23 @@ export class UpdateUserComponent implements OnInit {
   }
 
   submitForm() {
+    let valid = true;
     console.log(this.myForm.value);
     this.myForm.value.id = this.route.snapshot.paramMap.get('id')!;
-    this.userService.patchUser(this.myForm.value).subscribe(res => {
-      this.router.navigate(["/user"]);
+    Object.keys(this.myForm.controls).forEach(key => {
+      // Get errors of every form control
+      if (this.myForm.get(key)!.errors != null) {
+        valid = false;
+      }
     });
+
+    if (valid) {
+      this.userService.patchUser(this.myForm.value).subscribe(res => {
+        this.router.navigate(["/user"]);
+      });
+    }
+  }
+  public myError = (controlName: string, errorName: string) => {
+    return this.myForm.controls[controlName].hasError(errorName);
   }
 }
