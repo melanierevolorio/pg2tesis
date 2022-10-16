@@ -1,16 +1,16 @@
 export class Customer {
 
-  constructor(id?: string, userName?: string, email?: string, role?: string) {
+  constructor(id?: number, name?: string, phoneNumber?: string, address?: string) {
     this.id = id;
-    this.userName = userName;
-    this.email = email;
-    this.role = role;
+    this.name = name;
+    this.phoneNumber = phoneNumber;
+    this.address = address;
   }
 
-  public id?: string;
-  public userName?: string;
-  public email?: string;
-  public role?: string;
+  public id?: number;
+  public name?: string;
+  public phoneNumber?: string;
+  public address?: string;
   public index?: number;
 }
 

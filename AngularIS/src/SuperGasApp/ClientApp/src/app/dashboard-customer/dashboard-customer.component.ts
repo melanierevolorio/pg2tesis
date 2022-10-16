@@ -9,13 +9,13 @@ import { CustomerDbService } from '../../services/customer-db.service';
 import { ModalConfirmComponent } from '../modals/confirm/modal-confirm.component';
 
 @Component({
-  selector: 'dashboard-custumer-component',
-  templateUrl: './dashboard-custumer.component.html',
-  styleUrls: ['./dashboard-custumer.component.scss']
+  selector: 'dashboard-customer-component',
+  templateUrl: './dashboard-customer.component.html',
+  styleUrls: ['./dashboard-customer.component.scss']
 })
 export class CustomerDashboardComponent implements OnInit {
   customers: Customer[] = [];
-  displayedColumns: string[] = ['actions', 'userName', 'email', 'role'];
+  displayedColumns: string[] = ['actions', 'name', 'phoneNumber', 'address'];
   //dataSource = new MatTableDataSource([...ELEMENT_DATA, ...ELEMENT_DATA]);
   dataSource = new MatTableDataSource<Customer>();
 
@@ -46,7 +46,7 @@ export class CustomerDashboardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       data => {
         if (data) {
-          this.customerDbService.customerRemove(parseInt(customer.id!)).subscribe(result => {
+          this.customerDbService.customerRemove(customer.id!).subscribe(result => {
             this.dataSource.data.splice(customer.index!, 1);
             this.dataSource._updateChangeSubscription();
             this.dataSource.sort = this.sort;
@@ -77,7 +77,7 @@ export class CustomerDashboardComponent implements OnInit {
   }
 
   delete(customer: Customer) {
-    this.customerDbService.customerRemove(parseInt(customer.id!)).subscribe(result => {
+    this.customerDbService.customerRemove(customer.id!).subscribe(result => {
       this.dataSource.data.splice(customer.index!, 1);
       this.dataSource._updateChangeSubscription();
       this.dataSource.sort = this.sort;

@@ -27,6 +27,7 @@ import { UpdateUserComponent } from './dashboard-user/update-user/update-user.co
 import { CustomerDashboardComponent } from './dashboard-customer/dashboard-customer.component';
 import { UpdateCustomerComponent } from './dashboard-customer/update-customer/update-customer.component';
 import { InsertCustomerComponent } from './dashboard-customer/insert-customer/insert-customer.component';
+import { CustomerDbService } from '../services/customer-db.service';
 
 @NgModule({
   imports: [
@@ -56,7 +57,7 @@ import { InsertCustomerComponent } from './dashboard-customer/insert-customer/in
     InsertCustomerComponent,
     UpdateCustomerComponent
   ],
-  providers: [AuthService, UserManagementService,
+  providers: [AuthService, UserManagementService, CustomerDbService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }  ],
   bootstrap: [AppComponent]
 })

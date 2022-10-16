@@ -17,24 +17,24 @@ export class CustomerDbService {
   }
 
 
-  patchUser(patchUser: Customer): Observable<any> {
-    return this.http.patch(BackendUrl.USERDATA + "/" + patchUser.id, patchUser);
+  customerModify(customer: Customer): Observable<any> {
+    return this.http.patch(BackendUrl.CUSTOMER + "/" + customer.id, customer);
   }
 
   customerInsert(customer: Customer): Observable<any> {
-    return this.http.post(BackendUrl.USERDATA, customer);
+    return this.http.post(BackendUrl.CUSTOMER, customer);
   }
 
   customerRemove(id: number): Observable<any> {
-    return this.http.delete(BackendUrl.USERDATA + "/" + id);
+    return this.http.delete(BackendUrl.CUSTOMER + "/" + id);
   }
 
 
   customerObtain(id: number): Observable<Customer> {
-    return this.http.get<Customer>(BackendUrl.USERDATA + "/" + id);
+    return this.http.get<Customer>(BackendUrl.CUSTOMER + "/" + id);
   }
 
   customerObtainAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(BackendUrl.USERDATA);
+    return this.http.get<Customer[]>(BackendUrl.CUSTOMER);
   }
 }

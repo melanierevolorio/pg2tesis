@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../../models/user.model';
+import { CustomerDbService } from '../../../services/customer-db.service';
 import { UserManagementService } from '../../../services/user-management.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class InsertCustomerComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    public userService: UserManagementService,
+    public customerService: CustomerDbService,
     private router: Router
   ) { }
 
@@ -26,10 +27,9 @@ export class InsertCustomerComponent implements OnInit {
 
   reactiveForm() {
     this.myForm = this.fb.group({
-      userName: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]],
-      role: [null, Validators.required],
-      password: [null, Validators.required]
+      name: [null, Validators.required],
+      phoneNumber: [null, Validators.required],
+      address: [null, Validators.required],
     });
   }
 
@@ -51,8 +51,8 @@ export class InsertCustomerComponent implements OnInit {
     });
 
     if (valid) {
-      this.userService.patchUser(this.myForm.value).subscribe(res => {
-        this.router.navigate(["/user"]);
+      this.customerService.customerInsert(this.myForm.value).subscribe(res => {
+        this.router.navigate(["/customer"]);
       });
     }
   }

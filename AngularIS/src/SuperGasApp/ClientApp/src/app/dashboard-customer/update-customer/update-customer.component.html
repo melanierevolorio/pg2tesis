@@ -7,30 +7,30 @@
 
       <!-- Name -->
       <p>
-        <mat-label>Usuario: </mat-label>
+        <mat-label>Nombre: </mat-label>
         <mat-form-field>
-          <input matInput placeholder="Usuario" formControlName="userName" />
-          <mat-error *ngIf="myError('userName', 'required')">Usuario obligatorio</mat-error>
+          <input matInput placeholder="Nombre" formControlName="name" />
+          <mat-error *ngIf="myError('name', 'required')">Nombre obligatorio</mat-error>
 
         </mat-form-field>
       </p>
       <p>
-        <!-- Email -->
-        <mat-label>Correo: </mat-label>
+        <!-- Teléfono -->
+        <mat-label>Teléfono: </mat-label>
         <mat-form-field>
-          <input matInput placeholder="Email" formControlName="email" />
-          <mat-error *ngIf="myError('email', 'required')">Correo requerido</mat-error>
-          <mat-error *ngIf="myError('email', 'email')">Debe ser un correo electrónico</mat-error>
+          <input matInput type="number" placeholder="Teléfono" formControlName="phoneNumber" />
+          <mat-error *ngIf="myError('phoneNumber', 'required')">Teléfono obligatorio</mat-error>
 
         </mat-form-field>
       </p>
-      <!-- Gender -->
       <p>
-        <mat-label>Rol: </mat-label>
-        <mat-radio-group aria-label="Role" formControlName="role">
-          <mat-radio-button value="Administrador">Administrador</mat-radio-button>
-          <mat-radio-button value="Operador">Operador</mat-radio-button>
-        </mat-radio-group>
+        <!-- Dirección -->
+        <mat-label>Dirección: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Dirección" formControlName="address" />
+          <mat-error *ngIf="myError('address', 'required')">Dirección obligatoria</mat-error>
+
+        </mat-form-field>
       </p>
       <!-- Submit -->
       <div class="button-wrapper">

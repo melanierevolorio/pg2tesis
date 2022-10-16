@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SuperGasSecurity.Migrations.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
-    [Migration("20221013002132_Permisos")]
+    [Migration("20221016072632_Permisos")]
     partial class Permisos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -12,7 +12,7 @@ using SuperGasSecurity.Data;
 namespace SuperGasSecurity.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221013002128_Usuarios")]
+    [Migration("20221016072628_Usuarios")]
     partial class Usuarios
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../../models/user.model';
+import { CustomerDbService } from '../../../services/customer-db.service';
 import { UserManagementService } from '../../../services/user-management.service';
 
 @Component({
@@ -14,27 +15,27 @@ export class UpdateCustomerComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    public userService: UserManagementService,
+    public customerService: CustomerDbService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.reactiveForm();
-    this.userService.getUser(this.route.snapshot.paramMap.get('id')!).subscribe(res => {
+    this.customerService.customerObtain(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(res => {
       this.myForm.patchValue({
-        userName: res.userName,
-        email: res.email,
-        role: res.role
+        name: res.name,
+        phoneNumber: res.phoneNumber,
+        address: res.address
       })
     });
   }
 
   reactiveForm() {
     this.myForm = this.fb.group({
-      userName: [null, Validators.required],
-      email: [null, [Validators.required, Validators.email]],
-      role: [null, Validators.required],
+      name: [null, Validators.required],
+      phoneNumber: [null, Validators.required],
+      address: [null, Validators.required],
     });
   }
 
@@ -57,8 +58,8 @@ export class UpdateCustomerComponent implements OnInit {
     });
 
     if (valid) {
-      this.userService.patchUser(this.myForm.value).subscribe(res => {
-        this.router.navigate(["/user"]);
+      this.customerService.customerModify(this.myForm.value).subscribe(res => {
+        this.router.navigate(["/customer"]);
       });
     }
   }
