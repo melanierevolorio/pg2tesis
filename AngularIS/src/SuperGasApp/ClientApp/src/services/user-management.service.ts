@@ -6,7 +6,7 @@ import { Observable, map, throwError, catchError } from 'rxjs';
 import { AddUser, UpdateUser, User } from '../models/user.model';
 import { LocalService } from '../services/local.service';
 import { LocalKeys } from './local-keys';
-import { UrlKeys } from './url-keys';
+import { BackendUrl } from './url-keys';
 import { UserClaimKeys } from './claim-keys';
 
 export interface UserClaim {
@@ -32,28 +32,28 @@ export class UserManagementService {
   }
 
   patchUser(patchUser: UpdateUser): Observable<any> {
-    return this.http.patch(UrlKeys.REMOTE + "/" + patchUser.id, patchUser);
+    return this.http.patch(BackendUrl.USERDATA + "/" + patchUser.id, patchUser);
   }
 
   addUser(user: AddUser): Observable<any> {
-    return this.http.post(UrlKeys.REMOTE, user);
+    return this.http.post(BackendUrl.USERDATA, user);
   }
 
   deleteUser(id: string): Observable<any> {
-    return this.http.delete(UrlKeys.REMOTE + "/" + id);
+    return this.http.delete(BackendUrl.USERDATA + "/" + id);
   }
 
   getCurrentUser(): Observable<User> {
     this.userId = this.getLocalUserData().id!
-    return this.http.get<User>(UrlKeys.REMOTE + "/" + this.userId);
+    return this.http.get<User>(BackendUrl.USERDATA + "/" + this.userId);
   }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(UrlKeys.REMOTE + "/" + id);
+    return this.http.get<User>(BackendUrl.USERDATA + "/" + id);
   }
 
   getAllUsers(): Observable<User[]> {
     this.userId = this.getLocalUserData().id!
-    return this.http.get<User[]>(UrlKeys.REMOTE);
+    return this.http.get<User[]>(BackendUrl.USERDATA);
   }
 }

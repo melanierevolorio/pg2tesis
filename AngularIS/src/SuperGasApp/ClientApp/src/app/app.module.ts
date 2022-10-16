@@ -24,6 +24,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ModalConfirmComponent } from './modals/confirm/modal-confirm.component';
 import { InsertUserComponent } from './dashboard-user/insert-user/insert-user.component';
 import { UpdateUserComponent } from './dashboard-user/update-user/update-user.component';
+import { CustomerDashboardComponent } from './dashboard-customer/dashboard-customer.component';
+import { UpdateCustomerComponent } from './dashboard-customer/update-customer/update-customer.component';
+import { InsertCustomerComponent } from './dashboard-customer/insert-customer/insert-customer.component';
 
 @NgModule({
   imports: [
@@ -46,9 +49,12 @@ import { UpdateUserComponent } from './dashboard-user/update-user/update-user.co
     SettingsComponent,
     ProfileComponent,
     UserDashboardComponent,
+    CustomerDashboardComponent,
     ModalConfirmComponent,
     InsertUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    InsertCustomerComponent,
+    UpdateCustomerComponent
   ],
   providers: [AuthService, UserManagementService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }  ],
