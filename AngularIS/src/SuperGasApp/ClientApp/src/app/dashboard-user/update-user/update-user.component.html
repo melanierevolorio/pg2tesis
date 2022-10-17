@@ -25,7 +25,7 @@
       </p>
       <!-- Roles -->
       <p>
-        <mat-label>Rol: </mat-label>
+        <mat-label>Cargo: </mat-label>
         <mat-form-field class="ml-2">
           <mat-select *ngIf="roles$ | async; let roles" formControlName="role">
             <mat-option *ngFor="let role of roles;" [value]="role.name">

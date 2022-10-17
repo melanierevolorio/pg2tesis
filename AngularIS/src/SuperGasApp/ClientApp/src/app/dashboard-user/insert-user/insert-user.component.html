@@ -15,17 +15,16 @@
         </mat-form-field>
     
         <!-- Email -->
-        <mat-label>Correo: </mat-label>
+        <mat-label class="ml-2">Correo: </mat-label>
         <mat-form-field class="ml-2">
           <input matInput placeholder="Email" formControlName="email" />
           <mat-error *ngIf="myError('email', 'required')">Correo requerido</mat-error>
           <mat-error *ngIf="myError('email', 'email')">Debe ser un correo electrónico</mat-error>
 
         </mat-form-field>
-      </p>
-      <p>
+      
         <!-- Contraseña -->
-        <mat-label>Contraseña: </mat-label>
+        <mat-label class="ml-2">Contraseña: </mat-label>
         <mat-form-field class="ml-2">
           <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" formControlName="password" required>
           <mat-error *ngIf="myError('password', 'required')">Contraseña obligatoria</mat-error>
@@ -33,8 +32,8 @@
         </mat-form-field>
       </p>
     
-      <div class="grid justify-items-center">
-        <mat-label>Rol: </mat-label>
+      <div>
+        <mat-label>Cargo: </mat-label>
         <mat-form-field class="ml-2">
           <mat-select *ngIf="roles$ | async; let roles" formControlName="role">
             <mat-option *ngFor="let role of roles;" [value]="role.name">
