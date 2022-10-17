@@ -6,6 +6,9 @@ import { UpdateCustomerComponent } from './dashboard-customer/update-customer/up
 import { OrderDashboardComponent } from './dashboard-order/dashboard-order.component';
 import { InsertOrderComponent } from './dashboard-order/insert-order/insert-order.component';
 import { UpdateOrderComponent } from './dashboard-order/update-order/update-order.component';
+import { ProductDashboardComponent } from './dashboard-product/dashboard-product.component';
+import { InsertProductComponent } from './dashboard-product/insert-product/insert-product.component';
+import { UpdateProductComponent } from './dashboard-product/update-product/update-product.component';
 import { UserDashboardComponent } from './dashboard-user/dashboard-user.component';
 import { InsertUserComponent } from './dashboard-user/insert-user/insert-user.component';
 import { UpdateUserComponent } from './dashboard-user/update-user/update-user.component';
@@ -35,6 +38,9 @@ const routes: Routes = [
         { path: 'order', pathMatch: 'full', component: OrderDashboardComponent },
         { path: 'order/edit/:id', pathMatch: 'full', component: UpdateOrderComponent },
         { path: 'order/add', pathMatch: 'full', component: InsertOrderComponent },
+        { path: 'product', pathMatch: 'full', component: ProductDashboardComponent },
+        { path: 'product/edit/:id', pathMatch: 'full', component: UpdateProductComponent },
+        { path: 'product/add', pathMatch: 'full', component: InsertProductComponent },
       ]
   },
   { path: 'login', pathMatch: 'full', component: LoginComponent },

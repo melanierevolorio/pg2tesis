@@ -32,6 +32,10 @@ import { OrderDbService } from '../services/order-db.service';
 import { UpdateOrderComponent } from './dashboard-order/update-order/update-order.component';
 import { InsertOrderComponent } from './dashboard-order/insert-order/insert-order.component';
 import { OrderDashboardComponent } from './dashboard-order/dashboard-order.component';
+import { UpdateProductComponent } from './dashboard-product/update-product/update-product.component';
+import { InsertProductComponent } from './dashboard-product/insert-product/insert-product.component';
+import { ProductDashboardComponent } from './dashboard-product/dashboard-product.component';
+import { ProductDbService } from '../services/product-db.service';
 
 @NgModule({
   imports: [
@@ -62,9 +66,12 @@ import { OrderDashboardComponent } from './dashboard-order/dashboard-order.compo
     UpdateCustomerComponent,
     InsertOrderComponent,
     UpdateOrderComponent,
-    OrderDashboardComponent
+    OrderDashboardComponent,
+    InsertProductComponent,
+    UpdateProductComponent,
+    ProductDashboardComponent
   ],
-  providers: [AuthService, UserManagementService, CustomerDbService, OrderDbService,
+  providers: [AuthService, UserManagementService, CustomerDbService, OrderDbService, ProductDbService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }  ],
   bootstrap: [AppComponent]
 })
