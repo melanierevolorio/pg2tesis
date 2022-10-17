@@ -40,7 +40,7 @@ $base-theme: mat.define-light-theme(( color: ( primary: $primary, accent: $accen
     background-color: mat-color($primary) !important;
     color: mat-color($primary, default-contrast) !important;
   }
-/*
+  /*
   .mat-drawer {
     background-color: mat-color($primary) !important;
     color: mat-color($primary, default-contrast) !important;

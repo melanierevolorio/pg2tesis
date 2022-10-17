@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Acme&family=Indie+Flower&family=Righteous&display=swap');
+
 .welcome-page {
   .logo {
     width: 64px;
@@ -46,5 +49,13 @@
     label {
       font-weight: bold;
     }
+
   }
+
+ 
+}
+
+.title {
+    font-family: 'Righteous', cursive !important;
+    font-weight: 700 !important;
 }

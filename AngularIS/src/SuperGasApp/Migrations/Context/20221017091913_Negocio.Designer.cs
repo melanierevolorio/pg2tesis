@@ -12,7 +12,7 @@ using SuperGasApp.Data;
 namespace SuperGasApp.Migrations.Context
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221017005955_Negocio")]
+    [Migration("20221017091913_Negocio")]
     partial class Negocio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

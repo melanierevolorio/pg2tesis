@@ -37,3 +37,9 @@
 .grants-page .card label {
   font-weight: bold;
 }
+
+
+.title {
+    font-family: 'Righteous', cursive !important;
+    font-weight: 700 !important;
+}

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace SuperGasSecurity.Migrations.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20221017010013_Seguridad")]
+    [Migration("20221017091936_Seguridad")]
     partial class Seguridad
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
