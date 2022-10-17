@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="side" class="primary" [ngStyle]="{ 'width.em': sidenavWidth }" opened="true" (mouseenter)="increase()"
                (mouseleave)="decrease()">
 
-    <div class="logomain">Logo Part</div>
+    <div class="logomain">Super Gas</div>
     <mat-nav-list>
       <mat-list-item routerLink="/user" routerLinkActive="active">
         <mat-icon mat-list-icon>person</mat-icon>
@@ -39,6 +39,15 @@
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
           <h5 class="primary">Productos</h5>
+        </div>
+      </mat-list-item>
+      <span class="example-spacer"></span>
+
+      <mat-list-item routerLink="/logout" routerLinkActive="active">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="primary">Cerrar Sesión</h5>
         </div>
       </mat-list-item>
 

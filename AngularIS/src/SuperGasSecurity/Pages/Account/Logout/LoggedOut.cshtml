@@ -2,17 +2,17 @@
 @model SuperGasSecurity.Pages.Account.Logout.LoggedOut
 
 <div class="logged-out-page">
-    <h1>
-        Logout
-        <small>You are now logged out</small>
+    <h1 class ="font-medium leading-tight text-5xl mt-0 mb-2 text-primary">
+            SU SESIÓN SE HA CERRADO CORRECTAMENTE
     </h1>
-
     @if (Model.View.PostLogoutRedirectUri != null)
     {
-        <div>
-            Click <a class="PostLogoutRedirectUri" href="@Model.View.PostLogoutRedirectUri">here</a> to return to the
-            <span>@Model.View.ClientName</span> application.
+        <h3 class="font-medium leading-tight text-5xl mt-0 mb-2 text-primary">
+           <div>
+            Haga click <a class="PostLogoutRedirectUri" href="@Model.View.PostLogoutRedirectUri">aquí</a> para iniciar sesión nuevamente
         </div>
+        </h3>
+        
     }
 
     @if (Model.View.SignOutIframeUrl != null)
