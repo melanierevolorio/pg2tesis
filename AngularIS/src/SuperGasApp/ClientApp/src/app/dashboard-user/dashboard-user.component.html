@@ -2,7 +2,7 @@
   <div class="m-auto p-10 container">
 
   
-      <h1 class="font-medium leading-tight text-center text-5xl mt-0 mb-12 mt-12 text-primary">U S U A R I O S</h1>
+      <h1 class="font-medium leading-tight text-center text-5xl mt-0 mb-12 mt-12 text-primary title">U S U A R I O S</h1>
 
     <div class="container h-full w-full">
 
@@ -14,20 +14,24 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Búsqueda">
         </mat-form-field>
       </div>
-
         <table mat-table matSort matTableResponsive [dataSource]="dataSource">
           <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
           <!-- Position Column -->
           <ng-container matColumnDef="actions">
+            
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element" class="header-align-left">
-              <button mat-icon-button (click)="edit(element)">
-                <mat-icon color="primary">edit</mat-icon>
-              </button>
-              <button mat-icon-button (click)="openDialog(element)">
-                <mat-icon color="primary">delete</mat-icon>
-              </button>
+              <div class="grid justify-items-start">
+                <div>
+                  <button mat-icon-button (click)="edit(element)">
+                    <mat-icon color="primary">edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="openDialog(element)">
+                    <mat-icon color="primary">delete</mat-icon>
+                  </button>
+                </div>
+              </div>
             </td>
           </ng-container>
           <ng-container matColumnDef="index">

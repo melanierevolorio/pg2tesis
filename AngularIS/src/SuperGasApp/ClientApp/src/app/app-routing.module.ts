@@ -12,6 +12,7 @@ import { UpdateProductComponent } from './dashboard-product/update-product/updat
 import { UserDashboardComponent } from './dashboard-user/dashboard-user.component';
 import { InsertUserComponent } from './dashboard-user/insert-user/insert-user.component';
 import { UpdateUserComponent } from './dashboard-user/update-user/update-user.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -21,7 +22,7 @@ import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
-    path: '', canActivate: [AuthGuard], children:
+    path: '', component: HomeComponent, canActivate: [AuthGuard], children:
       [
         {
           path: 'settings',

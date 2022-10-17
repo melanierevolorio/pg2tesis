@@ -2,14 +2,23 @@
   <mat-sidenav #sidenav mode="side" class="primary" [ngStyle]="{ 'width.em': sidenavWidth }" opened="true" (mouseenter)="increase()"
                (mouseleave)="decrease()">
 
-    <div class="logomain">Super Gas</div>
     <mat-nav-list>
+      <mat-list-item routerLink="/" routerLinkActive="active">
+        <mat-icon mat-list-icon>home</mat-icon>
+
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="primary title">Super Gas</h5>
+        </div>
+      </mat-list-item>
+
+
       <mat-list-item routerLink="/user" routerLinkActive="active">
         <mat-icon mat-list-icon>person</mat-icon>
 
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
-          <h5 class="primary">Usuarios</h5>
+          <h5 class="primary title">Usuarios</h5>
         </div>
       </mat-list-item>
       <mat-list-item routerLink="/customer" routerLinkActive="active">
@@ -17,7 +26,7 @@
 
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
-          <h5 class="primary">Clientes</h5>
+          <h5 class="primary title">Clientes</h5>
         </div>
       </mat-list-item>
       <!--<ng-container *ngIf="user$ | async; let user">
@@ -30,7 +39,7 @@
         <mat-icon mat-list-icon>local_phone</mat-icon>
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
-          <h5 class="primary">Pedidos</h5>
+          <h5 class="primary title">Pedidos</h5>
         </div>
       </mat-list-item>
 
@@ -38,7 +47,7 @@
         <mat-icon mat-list-icon>folder</mat-icon>
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
-          <h5 class="primary">Productos</h5>
+          <h5 class="primary title">Productos</h5>
         </div>
       </mat-list-item>
       <span class="example-spacer"></span>
@@ -47,7 +56,7 @@
         <mat-icon mat-list-icon>exit_to_app</mat-icon>
         <div fxFlex="10"></div>
         <div *ngIf="sidenavWidth > 6" class="sidenav-item">
-          <h5 class="primary">Cerrar Sesión</h5>
+          <h5 class="primary title">Cerrar Sesión</h5>
         </div>
       </mat-list-item>
 
