@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, map, throwError, catchError } from 'rxjs';
-import { AddUser, UpdateUser, User } from '../models/user.model';
+import { AddUser, Role, UpdateUser, User } from '../models/user.model';
 import { LocalService } from '../services/local.service';
 import { LocalKeys } from './local-keys';
 import { BackendUrl } from './url-keys';
@@ -50,6 +50,10 @@ export class UserManagementService {
 
   getUser(id: string): Observable<User> {
     return this.http.get<User>(BackendUrl.USERDATA + "/" + id);
+  }
+
+  getRoles(): Observable<Role[]> {
+    return this.http.get<Role[]>(BackendUrl.USERDATA + "/roles");
   }
 
   getAllUsers(): Observable<User[]> {

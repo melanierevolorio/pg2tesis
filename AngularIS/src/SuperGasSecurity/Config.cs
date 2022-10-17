@@ -142,8 +142,8 @@ public static class Config
             },
             new IdentityRole(){
                 Id = "2",
-                Name = "Operador",
-                NormalizedName = "OPERADOR"
+                Name = "Secretaria",
+                NormalizedName = "SECRETARIA"
             }
         };
 

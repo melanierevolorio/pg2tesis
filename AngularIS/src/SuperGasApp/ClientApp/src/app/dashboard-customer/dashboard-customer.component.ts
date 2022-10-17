@@ -37,8 +37,8 @@ export class CustomerDashboardComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      title: "Usuario",
-      description: "Eliminar",
+      title: "¿Desea eliminar este cliente?",
+     /* description: "Eliminar",*/
     };
 
     const dialogRef = this.dialog.open(ModalConfirmComponent, dialogConfig);

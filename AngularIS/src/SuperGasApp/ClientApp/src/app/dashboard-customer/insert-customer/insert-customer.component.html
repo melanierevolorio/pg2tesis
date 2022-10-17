@@ -3,7 +3,7 @@
 
     <!-- Form -->
     <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
-      <h1 class="text-center text-primary text-xl leading-8 pb-12">AÑADIR NUEVO CLIENTE</h1>
+      <h1 class="text-center text-primary text-[35px] leading-8 pb-12">Añadir Nuevo Cliente</h1>
       <!-- Name -->
       <p>
         <mat-label>Nombre: </mat-label>
@@ -30,8 +30,10 @@
 
       <!-- Submit -->
       <div class="button-wrapper text-center">
-        <button mat-flat-button color="primary">Confirmar</button>
-      </div>
-    </form>
+        <div class="grid justify-items-center">
+          <button mat-flat-button color="primary">Confirmar</button>
+          </div>
+        </div>
+</form>
   </div>
 </div>

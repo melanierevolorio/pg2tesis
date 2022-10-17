@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../../models/user.model';
+import { Observable } from 'rxjs';
+import { Role, User } from '../../../models/user.model';
 import { UserManagementService } from '../../../services/user-management.service';
 
 @Component({
@@ -12,6 +13,7 @@ import { UserManagementService } from '../../../services/user-management.service
 export class InsertUserComponent implements OnInit {
   myForm!: FormGroup;
   hide = true;
+  roles$: Observable<Role[]> = new Observable<Role[]>();
 
   constructor(
     public fb: FormBuilder,
@@ -20,6 +22,7 @@ export class InsertUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.roles$ = this.userService.getRoles();
     this.reactiveForm();
   }
 
@@ -29,7 +32,8 @@ export class InsertUserComponent implements OnInit {
       userName: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       role: [null, Validators.required],
-      password: [null, Validators.required]
+      password: [null, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+      ]
     });
   }
 
@@ -51,7 +55,7 @@ export class InsertUserComponent implements OnInit {
     });
 
     if (valid) {
-      this.userService.patchUser(this.myForm.value).subscribe(res => {
+      this.userService.addUser(this.myForm.value).subscribe(res => {
         this.router.navigate(["/user"]);
       });
     }

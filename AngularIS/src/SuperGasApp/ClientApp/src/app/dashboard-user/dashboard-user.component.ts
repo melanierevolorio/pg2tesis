@@ -37,8 +37,8 @@ export class UserDashboardComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      title: "Usuario",
-      description: "Eliminar",
+      title: "¿Desea eliminar este usuario?",
+  /*    description: "Eliminar",*/
     };
 
     const dialogRef = this.dialog.open(ModalConfirmComponent, dialogConfig);

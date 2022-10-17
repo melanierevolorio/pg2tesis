@@ -3,31 +3,21 @@
 
     <!-- Form -->
     <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
-      <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Datos</h1>
+      <h1 class="text-center text-primary text-[35px] leading-8 pb-12">Editar Pedido</h1>
 
-      <!-- Anotaciones -->
-      <p>
-        <mat-label>Anotaciones: </mat-label>
-        <mat-form-field>
-          <input matInput placeholder="Anotaciones" formControlName="annotations" />
-          <!--<mat-error *ngIf="myError('annotations', 'required')">Nombre obligatorio</mat-error>-->
-
-        </mat-form-field>
-      </p>
+     
       <p>
         <!-- Cliente -->
         <mat-label>Cliente: </mat-label>
-        <mat-form-field>
+        <mat-form-field class="ml-2">
           <mat-select *ngIf="customers$ | async; let customers" formControlName="customerId">
             <mat-option *ngFor="let customer of customers;" [value]="customer.id">
               {{customer.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
-      <p>
         <!-- Fecha -->
-        <mat-form-field>
+        <mat-form-field class="ml-5">
           <input matInput
                  readonly
                  [matDatepicker]="picker"
@@ -36,6 +26,16 @@
                  (dateChange)="date($event)" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </p>
+      <p>
+        <!-- Anotaciones -->
+        <mat-label>Anotaciones: </mat-label>
+        <mat-form-field>
+          <input matInput placeholder="Anotaciones" formControlName="annotations" />
+          <!--<mat-error *ngIf="myError('annotations', 'required')">Nombre obligatorio</mat-error>-->
+
         </mat-form-field>
       </p>
       <!-- Submit -->

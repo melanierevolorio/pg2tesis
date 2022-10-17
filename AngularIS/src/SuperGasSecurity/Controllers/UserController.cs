@@ -47,6 +47,12 @@ namespace SuperGasSecurity.Controllers
             };
         }
 
+        [HttpGet("roles")]
+        public async Task<List<IdentityRole>> GetRoles()
+        {
+            return _roleManager.Roles.ToList();
+        }
+
         [HttpGet]
         public async Task<List<UserModel>> Get()
         {
@@ -73,8 +79,7 @@ namespace SuperGasSecurity.Controllers
 
             await _userManager.RemoveFromRoleAsync(user, roles.FirstOrDefault());
             await _userManager.AddToRoleAsync(user, request.Role);
-            await _userManager.UpdateAsync(user);
-
+            var test = await _userManager.UpdateAsync(user);
             return Ok();
         }
 
@@ -86,8 +91,9 @@ namespace SuperGasSecurity.Controllers
             var result = await _userManager.CreateAsync(user, request.Password);
 
             if (result.Succeeded)
-                result = await _userManager.AddToRoleAsync(user, "Operador");
-
+                result = await _userManager.AddToRoleAsync(user, request.Role);
+            else
+                return BadRequest(result.Errors);
             return Ok();
         }
 

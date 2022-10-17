@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../../models/user.model';
+import { Observable } from 'rxjs';
+import { Role, User } from '../../../models/user.model';
 import { UserManagementService } from '../../../services/user-management.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { UserManagementService } from '../../../services/user-management.service
 })
 export class UpdateUserComponent implements OnInit {
   myForm!: FormGroup;
+  roles$: Observable<Role[]> = new Observable<Role[]>();
 
   constructor(
     public fb: FormBuilder,
@@ -20,6 +22,8 @@ export class UpdateUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.roles$ = this.userService.getRoles();
+
     this.reactiveForm();
     this.userService.getUser(this.route.snapshot.paramMap.get('id')!).subscribe(res => {
       this.myForm.patchValue({

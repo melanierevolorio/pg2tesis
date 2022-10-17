@@ -3,21 +3,20 @@
 
     <!-- Form -->
     <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
-      <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Datos</h1>
+      <h1 class="text-center text-primary text-[35px] leading-8 pb-12">Editar Cliente</h1>
 
       <!-- Name -->
       <p>
         <mat-label>Nombre: </mat-label>
-        <mat-form-field>
+        <mat-form-field  class="ml-2">
           <input matInput placeholder="Nombre" formControlName="name" />
           <mat-error *ngIf="myError('name', 'required')">Nombre obligatorio</mat-error>
 
         </mat-form-field>
-      </p>
-      <p>
+      
         <!-- Teléfono -->
         <mat-label>Teléfono: </mat-label>
-        <mat-form-field>
+        <mat-form-field class="ml-2">
           <input matInput type="number" placeholder="Teléfono" formControlName="phoneNumber" />
           <mat-error *ngIf="myError('phoneNumber', 'required')">Teléfono obligatorio</mat-error>
 
@@ -34,7 +33,10 @@
       </p>
       <!-- Submit -->
       <div class="button-wrapper">
-        <button mat-flat-button color="primary">Confirmar</button>
+     
+        <div class="grid justify-items-center mt-6">
+          <button mat-flat-button color="primary">Confirmar</button>
+        </div>
       </div>
     </form>
   </div>
