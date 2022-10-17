@@ -17,7 +17,7 @@ import { ModalConfirmComponent } from '../modals/confirm/modal-confirm.component
 })
 export class OrderDashboardComponent implements OnInit {
   orders: Order[] = [];
-  displayedColumns: string[] = ['actions', 'annotations', 'customersId', 'date'];
+  displayedColumns: string[] = ['actions', 'annotations', 'customerId', 'customerAddress', 'date'];
   //dataSource = new MatTableDataSource([...ELEMENT_DATA, ...ELEMENT_DATA]);
   dataSource = new MatTableDataSource<Order>();
 

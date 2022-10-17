@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Customer } from '../../../models/customer.model';
 import { User } from '../../../models/user.model';
 import { CustomerDbService } from '../../../services/customer-db.service';
 import { OrderDbService } from '../../../services/order-db.service';
@@ -13,20 +15,25 @@ import { UserManagementService } from '../../../services/user-management.service
 })
 export class UpdateOrderComponent implements OnInit {
   myForm!: FormGroup;
+  customers$: Observable<Customer[]> = new Observable<Customer[]>();
 
   constructor(
     public fb: FormBuilder,
     public orderService: OrderDbService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public customerService: CustomerDbService
+
   ) { }
 
   ngOnInit(): void {
     this.reactiveForm();
+    this.customers$ = this.customerService.customerObtainAll();
+
     this.orderService.orderObtain(parseInt(this.route.snapshot.paramMap.get('id')!)).subscribe(res => {
       this.myForm.patchValue({
         annotations: res.annotations,
-        customersId: res.customersId,
+        customerId: res.customerId,
         date: res.date
       })
     });
@@ -35,14 +42,15 @@ export class UpdateOrderComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
       annotations: [null],
-      customersId: [null, Validators.required],
+      customerId: [null, Validators.required],
       date: [null, Validators.required],
     });
   }
 
   date(e) {
-    var convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.myForm.get('dob')?.setValue(convertDate, {
+    var convertDate = new Date(e.target.value);
+    let convertedDate = convertDate.toJSON();
+    this.myForm.get('date')?.setValue(convertedDate, {
       onlyself: true,
     });
   }

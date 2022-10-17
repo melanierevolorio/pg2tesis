@@ -44,16 +44,16 @@ namespace SuperGasApp.Migrations.Context
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Annotations = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CustomersId = table.Column<int>(type: "int", nullable: false),
+                    Annotations = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomersId",
-                        column: x => x.CustomersId,
+                        name: "FK_Orders_Customers_CustomerId",
+                        column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -70,28 +70,28 @@ namespace SuperGasApp.Migrations.Context
                     ProductQuantity = table.Column<int>(type: "int", nullable: false),
                     ProductPrice = table.Column<double>(type: "float", nullable: false),
                     ProductTotalPrice = table.Column<double>(type: "float", nullable: false),
-                    OrdersId = table.Column<int>(type: "int", nullable: false)
+                    OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrdersProducts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrdersProducts_Orders_OrdersId",
-                        column: x => x.OrdersId,
+                        name: "FK_OrdersProducts_Orders_OrderId",
+                        column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomersId",
+                name: "IX_Orders_CustomerId",
                 table: "Orders",
-                column: "CustomersId");
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdersProducts_OrdersId",
+                name: "IX_OrdersProducts_OrderId",
                 table: "OrdersProducts",
-                column: "OrdersId");
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

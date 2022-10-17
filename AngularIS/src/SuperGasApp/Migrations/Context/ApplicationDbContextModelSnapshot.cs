@@ -22,7 +22,7 @@ namespace SuperGasApp.Migrations.Context
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Customers", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace SuperGasApp.Migrations.Context
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Orders", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,10 +55,9 @@ namespace SuperGasApp.Migrations.Context
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Annotations")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomersId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -66,12 +65,12 @@ namespace SuperGasApp.Migrations.Context
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomersId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.OrdersProducts", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.OrderProduct", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -83,7 +82,7 @@ namespace SuperGasApp.Migrations.Context
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrdersId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductName")
@@ -101,7 +100,7 @@ namespace SuperGasApp.Migrations.Context
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrdersId");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("OrdersProducts");
                 });
@@ -126,34 +125,34 @@ namespace SuperGasApp.Migrations.Context
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Orders", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Order", b =>
                 {
-                    b.HasOne("SuperGasApp.Data.Models.Inventory.Customers", "Customers")
+                    b.HasOne("SuperGasApp.Data.Models.Inventory.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomersId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customers");
+                    b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.OrdersProducts", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.OrderProduct", b =>
                 {
-                    b.HasOne("SuperGasApp.Data.Models.Inventory.Orders", "Orders")
+                    b.HasOne("SuperGasApp.Data.Models.Inventory.Order", "Order")
                         .WithMany("OrdersProducts")
-                        .HasForeignKey("OrdersId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Orders");
+                    b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Customers", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Customer", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Orders", b =>
+            modelBuilder.Entity("SuperGasApp.Data.Models.Inventory.Order", b =>
                 {
                     b.Navigation("OrdersProducts");
                 });

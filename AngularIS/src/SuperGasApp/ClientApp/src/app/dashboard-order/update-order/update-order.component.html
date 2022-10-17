@@ -18,18 +18,24 @@
         <!-- Cliente -->
         <mat-label>Cliente: </mat-label>
         <mat-form-field>
-          <input matInput type="number" placeholder="Cliente" formControlName="customersId" />
-          <mat-error *ngIf="myError('customersId', 'required')">Nombre del cliente obligatorio</mat-error>
-
+          <mat-select *ngIf="customers$ | async; let customers" formControlName="customerId">
+            <mat-option *ngFor="let customer of customers;" [value]="customer.id">
+              {{customer.name}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </p>
       <p>
         <!-- Fecha -->
-        <mat-label>Fecha: </mat-label>
         <mat-form-field>
-          <input matInput placeholder="Fecha" formControlName="date" />
-          <mat-error *ngIf="myError('date', 'required')">Fecha</mat-error>
-
+          <input matInput
+                 readonly
+                 [matDatepicker]="picker"
+                 placeholder="Fecha"
+                 formControlName="date"
+                 (dateChange)="date($event)" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </p>
       <!-- Submit -->

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SuperGasApp.Data;
 using SuperGasApp.Data.Models.Inventory;
+using SuperGasApp.Model;
 
 [ApiController]
 [Authorize]
@@ -20,22 +21,22 @@ public class OrderController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> Get(int id) 
     {
-        var client = await _context.Orders.FindAsync(id);
+        var order = await _context.Orders.Include(x=>x.Customer).SingleAsync(x=>x.Id == id);
 
-        return Ok(client);
+        return Ok(order.Adapt<OrderModel>());
     }
 
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        var clients = await _context.Orders.ToListAsync();
-        return Ok(clients);
+        var orders = await _context.Orders.Include(x => x.Customer).ToListAsync();
+        return Ok(orders.Adapt<List<OrderModel>>());
     }
 
     [HttpPatch("{id}")]
-    public async Task<IActionResult> Patch(int id, [FromBody] Orders request)
+    public async Task<IActionResult> Patch(int id, [FromBody] OrderModel request)
     {
         var client = await _context.Orders.FindAsync(id);
         var newClient = request.Adapt(client);
@@ -45,9 +46,9 @@ public class OrderController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Orders request)
+    public async Task<IActionResult> Post(OrderModel request)
     {
-        await _context.Orders.AddAsync(request);
+        await _context.Orders.AddAsync(request.Adapt<Order>());
         await _context.SaveChangesAsync();
         return Ok();
     }

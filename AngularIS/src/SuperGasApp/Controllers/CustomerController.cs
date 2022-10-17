@@ -35,7 +35,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public async Task<IActionResult> Patch(int id, [FromBody] Customers request)
+    public async Task<IActionResult> Patch(int id, [FromBody] Customer request)
     {
         var client = await _context.Customers.FindAsync(id);
         var newClient = request.Adapt(client);
@@ -45,7 +45,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post(Customers request)
+    public async Task<IActionResult> Post(Customer request)
     {
         await _context.Customers.AddAsync(request);
         await _context.SaveChangesAsync();

@@ -1,69 +1,73 @@
 <div class="flex h-full w-full">
   <div class="m-auto p-10 container">
-    <blockquote class="blockquote text-center">
       <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-primary"> P E D I D O </h1>
-    </blockquote>
     
-    <div class="container h-full w-full">
+      <div class="container h-full w-full">
 
-      <mat-icon color="primary">search</mat-icon>
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Buscar">
-      </mat-form-field>
-      <div class="button-wrapper">
-        <button mat-flat-button color="primary" (click)="navigateInsertOrder()">Añadir </button>
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Buscar">
+        </mat-form-field>
+        <div class="button-wrapper">
+          <button mat-flat-button color="primary" (click)="navigateInsertOrder()">Añadir </button>
+        </div>
+        <table mat-table matSort matTableResponsive [dataSource]="dataSource">
+          <!--- Note that these columns can be defined in any order.
+  The actual rendered columns are set as a property on the row definition" -->
+          <!-- Position Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" class="header-align-right">
+              <button mat-icon-button (click)="edit(element)">
+                <mat-icon color="primary">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="openDialog(element)">
+                <mat-icon color="primary">delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="index">
+            <mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.index}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Código </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="annotations">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Anotaciones </th>
+            <td mat-cell *matCellDef="let element"> {{element.annotations}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="customerId">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Cliente </th>
+            <td mat-cell *matCellDef="let element"> {{element.customer.name}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="customerAddress">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Dirección </th>
+            <td mat-cell *matCellDef="let element"> {{element.customer.address}} </td>
+          </ng-container>
+
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Fecha</th>
+            <td mat-cell *matCellDef="let element"> {{element.date| date: 'dd/MM/yyyy'}}</td>
+          </ng-container>
+
+
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
       </div>
-      <table mat-table matSort matTableResponsive [dataSource]="dataSource">
-        <!--- Note that these columns can be defined in any order.
-    The actual rendered columns are set as a property on the row definition" -->
-        <!-- Position Column -->
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element" mat-sort-header class="header-align-right">
-            <button mat-icon-button (click)="edit(element)">
-              <mat-icon color="primary">edit</mat-icon>
-            </button>
-            <button mat-icon-button (click)="openDialog(element)">
-              <mat-icon color="primary">delete</mat-icon>
-            </button>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="index">
-          <mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
-          <mat-cell *matCellDef="let element">{{element.index}}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="id">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Código </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="annotations">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Anotaciones </th>
-          <td mat-cell *matCellDef="let element"> {{element.annotations}} </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="customersId">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Cliente </th>
-          <td mat-cell *matCellDef="let element"> {{element.customersId}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="date">
-          <th mat-header-cell mat-sort-header *matHeaderCellDef> Fecha</th>
-          <td mat-cell *matCellDef="let element"> {{element.date}}</td>
-        </ng-container>
-
-
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator #paginator [pageSizeOptions]="[2, 3, 4, 5]"></mat-paginator>
-
-    </div>
   </div>
 </div>
 
