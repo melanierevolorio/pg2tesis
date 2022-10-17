@@ -3,20 +3,16 @@
 
     <!-- Form -->
     <form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
-      <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-blue-600">Datos</h1>
-
+      <h1 class="text-center text-primary text-xl leading-8 pb-12">AÑADIR NUEVO CLIENTE</h1>
       <!-- Name -->
       <p>
         <mat-label>Nombre: </mat-label>
-        <mat-form-field>
+        <mat-form-field class="ml-2">
           <input matInput placeholder="Nombre" formControlName="name" />
           <mat-error *ngIf="myError('name', 'required')">Nombre obligatorio</mat-error>
 
         </mat-form-field>
-      </p>
-      <p>
-        <!-- Teléfono -->
-        <mat-label>Teléfono: </mat-label>
+        <mat-label class="ml-12">Teléfono: </mat-label>
         <mat-form-field>
           <input matInput type="number" placeholder="Teléfono" formControlName="phoneNumber" />
           <mat-error *ngIf="myError('phoneNumber', 'required')">Teléfono obligatorio</mat-error>
@@ -24,7 +20,6 @@
         </mat-form-field>
       </p>
       <p>
-        <!-- Dirección -->
         <mat-label>Dirección: </mat-label>
         <mat-form-field>
           <input matInput placeholder="Dirección" formControlName="address" />
@@ -32,8 +27,9 @@
 
         </mat-form-field>
       </p>
+
       <!-- Submit -->
-      <div class="button-wrapper">
+      <div class="button-wrapper text-center">
         <button mat-flat-button color="primary">Confirmar</button>
       </div>
     </form>

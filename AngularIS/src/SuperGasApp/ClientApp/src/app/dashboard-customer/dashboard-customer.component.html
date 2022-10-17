@@ -1,14 +1,16 @@
 <div class="flex h-full w-full">
   <div class="m-auto p-10 container">
-    <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-primary">Administración de usuarios</h1>
+    <h1 class="font-medium leading-tight text-center text-5xl mt-0 mb-12 mt-12 text-primary">C L I E N T E S</h1>
 
     <div class="container h-full w-full">
 
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar">
+      <div class="button-wrapper mb-5">
+        <button mat-fab class="primary" (click)="navigateInsertCustomer()">
+          <mat-icon>add</mat-icon>
+        </button>
+      <mat-form-field class="ml-6">
+        <input matInput (keyup)="applyFilter($event)" placeholder="Búsqueda">
       </mat-form-field>
-      <div class="button-wrapper">
-        <button mat-flat-button color="primary" (click)="navigateInsertCustomer()">Añadir nuevo usuario</button>
       </div>
       <table mat-table matSort matTableResponsive [dataSource]="dataSource">
         <!--- Note that these columns can be defined in any order.
