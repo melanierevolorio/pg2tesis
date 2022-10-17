@@ -15,8 +15,8 @@
 
         </mat-form-field>
         <!-- Email -->
-        <mat-label>Correo: </mat-label>
-        <mat-form-field class="ml-2">
+        <mat-label class="ml-8">Correo: </mat-label>
+        <mat-form-field >
           <input matInput placeholder="Email" formControlName="email" />
           <mat-error *ngIf="myError('email', 'required')">Correo requerido</mat-error>
           <mat-error *ngIf="myError('email', 'email')">Debe ser un correo electrónico</mat-error>
@@ -37,7 +37,7 @@
       <!-- Submit -->
       <div class="button-wrapper">
         <div class="grid justify-items-center mt-6" >
-          <button mat-flat-button color="primary">Confirmar</button>
+          <button mat-flat-button color="primary">Guardar</button>
         </div>
         </div>
 </form>

@@ -31,8 +31,8 @@
       </p>
       <p>
         <!-- Anotaciones -->
-        <mat-label>Anotaciones: </mat-label>
-        <mat-form-field>
+        <mat-label>Nota: </mat-label>
+        <mat-form-field class="ml-5">
           <input matInput placeholder="Anotaciones" formControlName="annotations" />
           <!--<mat-error *ngIf="myError('annotations', 'required')">Nombre obligatorio</mat-error>-->
 
@@ -40,8 +40,10 @@
       </p>
       <!-- Submit -->
       <div class="button-wrapper">
-        <button mat-flat-button color="primary">Confirmar</button>
+        <div class="grid justify-items-center mt-6">
+          <button mat-flat-button color="primary">Guardar</button>
+        </div>
       </div>
-    </form>
+</form>
   </div>
 </div>

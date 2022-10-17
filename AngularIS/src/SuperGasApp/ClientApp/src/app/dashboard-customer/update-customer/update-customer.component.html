@@ -15,8 +15,8 @@
         </mat-form-field>
       
         <!-- Teléfono -->
-        <mat-label>Teléfono: </mat-label>
-        <mat-form-field class="ml-2">
+        <mat-label class="ml-8">Teléfono: </mat-label>
+        <mat-form-field >
           <input matInput type="number" placeholder="Teléfono" formControlName="phoneNumber" />
           <mat-error *ngIf="myError('phoneNumber', 'required')">Teléfono obligatorio</mat-error>
 
@@ -35,7 +35,7 @@
       <div class="button-wrapper">
      
         <div class="grid justify-items-center mt-6">
-          <button mat-flat-button color="primary">Confirmar</button>
+          <button mat-flat-button color="primary">Guardar</button>
         </div>
       </div>
     </form>

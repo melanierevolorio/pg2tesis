@@ -20,7 +20,7 @@
         </mat-form-field>
 
         <!-- Fecha -->
-        <mat-form-field  class="ml-5">
+        <mat-form-field  class="ml-8">
           <input matInput
                  readonly
                  [matDatepicker]="picker"
@@ -32,8 +32,8 @@
         </mat-form-field>
       </p>
       <p>
-        <mat-label>Anotaciones: </mat-label>
-        <mat-form-field class="ml-520">
+        <mat-label  >Nota: </mat-label>
+        <mat-form-field class="ml-5">
           <input matInput placeholder="Anotaciones" formControlName="annotations" />
           <!--<mat-error *ngIf="myError('annotations', 'required')">Nombre obligatorio</mat-error>-->
 
@@ -44,7 +44,7 @@
       <div class="button-wrapper">
         <div class="grid justify-items-center" >
 
-          <button mat-flat-button color="primary">Confirmar</button>
+          <button mat-flat-button color="primary">Guardar</button>
         </div>
         </div>
 </form>
