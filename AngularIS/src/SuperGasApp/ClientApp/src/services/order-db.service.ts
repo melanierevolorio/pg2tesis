@@ -19,7 +19,7 @@ export class OrderDbService {
 
 
   orderModify(order: Order): Observable<any> {
-    return this.http.patch(BackendUrl.ORDER + "/" + Order.id, order);
+    return this.http.patch(BackendUrl.ORDER + "/" + order.id, order);
   }
 
   orderInsert(order: Order): Observable<any> {

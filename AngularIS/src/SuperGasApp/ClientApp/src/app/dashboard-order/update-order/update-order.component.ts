@@ -67,6 +67,7 @@ export class UpdateOrderComponent implements OnInit {
     });
 
     if (valid) {
+      this.myForm.value.id = parseInt(this.myForm.value.id);
       this.orderService.orderModify(this.myForm.value).subscribe(res => {
         this.router.navigate(["/order"]);
       });
