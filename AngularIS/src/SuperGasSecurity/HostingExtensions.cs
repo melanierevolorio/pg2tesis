@@ -21,9 +21,9 @@ internal static class HostingExtensions
 
         var migrationsAssembly = typeof(Program).Assembly.GetName().Name;
 
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionFinal");
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionFinal")));
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -73,7 +73,7 @@ internal static class HostingExtensions
         {
             app.UseDeveloperExceptionPage();
         }
-        InitializeDatabase(app);
+        //InitializeDatabase(app);
 
         app.UseStaticFiles();
         app.UseRouting();
@@ -101,9 +101,9 @@ internal static class HostingExtensions
             //persistedGrantContext.Database.EnsureDeleted();
             //configContext.Database.EnsureDeleted();
 
-            context.Database.Migrate();
-            persistedGrantContext.Database.Migrate();
-            configContext.Database.Migrate();
+            //context.Database.Migrate();
+            //persistedGrantContext.Database.Migrate();
+            //configContext.Database.Migrate();
 
             if (!configContext.Clients.Any())
                 foreach (var client in Config.Clients)

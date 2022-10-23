@@ -11,7 +11,7 @@ namespace SuperGasApp
     {
         public static WebApplication ConfigurePipeline(this WebApplication app)
         {
-            InitializeDatabase(app);
+            //InitializeDatabase(app);
 
             return app;
         }

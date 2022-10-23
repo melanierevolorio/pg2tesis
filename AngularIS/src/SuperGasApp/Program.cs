@@ -17,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddAuthorization();
 
 builder.Services.AddBff(options =>
-    options.LicenseKey = "eyJhbGciOiJQUzI1NiIsImtpZCI6IklkZW50aXR5U2VydmVyTGljZW5zZWtleS83Y2VhZGJiNzgxMzA0NjllODgwNjg5MTAyNTQxNGYxNiIsInR5cCI6ImxpY2Vuc2Urand0In0.eyJpc3MiOiJodHRwczovL2R1ZW5kZXNvZnR3YXJlLmNvbSIsImF1ZCI6IklkZW50aXR5U2VydmVyIiwiaWF0IjoxNjYwNDc5ODc4LCJleHAiOjE2OTIwMTU4NzgsImNvbXBhbnlfbmFtZSI6IkRlbnRhbCBFc2NvYmFyIiwiY29udGFjdF9pbmZvIjoiamVnbnpjQGdtYWlsLmNvbSIsImVkaXRpb24iOiJDb21tdW5pdHkifQ.ViQpxTylWcKbvenTieDhU3utG33VfRjrb9oTShb-VV3hdn1JsWEyArTpou_PuetxUvKmj9LGs-WAybO3jGbPTvOjTA3Ayq5k9E-XMnKPqDEYSQbHloYuAkjM7lE8LKXBX3H9K2rQJsOFjVlhDisJdciKCfxZov1RuPFZ31SfeA2kna2jcxq_k7v4dzYWdmwf_gHSu3NJIq7IQPdltkbJR6o1gCnIkkJyNFUqu9aPxQNwHvbJ99BVSyVKMNvoIeNbC4HBBw87tNBgxin8PlJzjBcUGIJA-DIj-BZ3jiBsYOMZc3nXaGpBuzCDZI-6wfEywEv8CbBsE558oQCA2OYOsg"
+    options.LicenseKey = "eyJhbGciOiJQUzI1NiIsImtpZCI6IklkZW50aXR5U2VydmVyTGljZW5zZWtleS83Y2VhZGJiNzgxMzA0NjllODgwNjg5MTAyNTQxNGYxNiIsInR5cCI6ImxpY2Vuc2Urand0In0.eyJpc3MiOiJodHRwczovL2R1ZW5kZXNvZnR3YXJlLmNvbSIsImF1ZCI6IklkZW50aXR5U2VydmVyIiwiaWF0IjoxNjYyMzg2MDA1LCJleHAiOjE2OTM5MjIwMDUsImNvbXBhbnlfbmFtZSI6IlN1cGVyZ2FzIiwiY29udGFjdF9pbmZvIjoiZ2FicmllbGFuaWpAZ21haWwuY29tIiwiZWRpdGlvbiI6IkNvbW11bml0eSJ9.q6GP5wp7T6y3m-wGpYd047iBCN3Q6H4URkSL4AFwWr3w7zcLiX1qvB9xT1itjxkl1L-mQ6ZxiOLJNBQARX4EM5-lWjjh2vJ7zfVJZcoH-JD7YS7S537q1Fr2kAw0d5Zcd4X-dGwXG1zWjk27Ib6txrsAqbXOKgaMyubr5Wi0ZyVUqdW8XT5irgg9LyBpdP67sgJLUhSaSETF8ukVO5HxwK2jXYW9-7MhqRaZbu5I0F0DVMM3VQzZ8jKSj7aGPb3OqJBL_Y6xvdYe1vqaVOX-n7n2O4-IbT2_e4GaJ3xoW9WPASGP4kDJgfiSrZRaPYJ_fX4qDN5sCAh95dO3mDtPPQ"
     ).AddRemoteApis();
 
 builder.Services
@@ -33,7 +33,8 @@ builder.Services
         options.Cookie.SameSite = SameSiteMode.Strict;
     }).AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "https://localhost:5001";
+        //options.Authority = "https://localhost:5001";
+        options.Authority = "https://seguridadsupergas.azurewebsites.net";
         options.ClientId = "bff";
         options.ClientSecret = "secret";
         options.ResponseType = "code";
@@ -91,7 +92,8 @@ app.UseEndpoints(endpoints =>
         .RequireAuthorization()
         .AsBffApiEndpoint(requireAntiForgeryCheck: false);
 
-    endpoints.MapRemoteBffApiEndpoint("/remote", "https://localhost:5001", false)
+    //endpoints.MapRemoteBffApiEndpoint("/remote", "https://localhost:5001", false)
+    endpoints.MapRemoteBffApiEndpoint("/remote", "https://seguridadsupergas.azurewebsites.net", false)
         .RequireAccessToken(TokenType.User);
 
     endpoints.MapFallbackToFile("/index.html");
